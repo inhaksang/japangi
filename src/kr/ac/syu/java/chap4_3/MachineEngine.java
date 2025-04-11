@@ -1,6 +1,5 @@
-//나는이재우
-
-package kr.ac.syu.java.chap4.third;
+//2024100895 이재우
+package kr.ac.syu.java.chap4_3;
 
 public class MachineEngine {
 	private MoneyBox moneyBox; //돈통
@@ -22,7 +21,6 @@ public class MachineEngine {
 	}
 
 	public void processSelection(int choice, int icehot, int money) {
-		moneyBox.totalmoney += money;
 		coffee.coffeetong(choice);
 		water.watertong(choice);
 		milk.milktong(choice);
@@ -30,6 +28,7 @@ public class MachineEngine {
 		ice.icetong(icehot);
 		
 		int returnmoney = moneyBox.returnMoney(choice, money);
+		moneyBox.totalmoney += money - returnmoney;
 		display.showMSG(choice, returnmoney);
 		
 	}

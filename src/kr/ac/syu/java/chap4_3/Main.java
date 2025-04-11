@@ -1,4 +1,5 @@
-package kr.ac.syu.java.chap4.third;
+//2024100895 이재우
+package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class Main {
@@ -9,28 +10,33 @@ public class Main {
 		 Menu menu = new Menu();
 		 Manager manager = new Manager();
 		 
-		 int price = 0; //메뉴의 가격
 		 int money; //총 들어간 돈
+		 int price = 0; //메뉴의 가격
 		 int insertMoney; //방금 들어간 돈
+		 
+		 int choice = 0;
 		 int icehot = 0;
 		 
-		 
 		 while(true) {
+			 
+			 
+			 
 			 try {
 				 money = 0; //초기화
 				 Manager.allWaring(); //재료 부족시 경고
 				 
 				 while(Manager.waring) { //경고 해제시까지 반복
-					 System.out.println("재료 또는 거스름돈이 부족합니다");
+					 System.out.println("\n\n경고: 재료 또는 거스름돈이 부족합니다");
 					 manager.manager();
 				 }
 				 
 				 System.out.println("\n\n메뉴를 선택하세요. 관리자 모드는 '100'을 입력하시오.");
 				 System.out.println("아메리카노 : 1\n카페라떼 : 2\n우유 : 3");
-				 int choice = scn.nextInt(); //입력받은 메뉴
+				 choice = scn.nextInt(); //입력받은 메뉴
 			 
 				 if (choice == 100) {
 					 manager.manager();
+					 continue;
 				 
 			 	 } else if (choice == 0) {
 					 System.out.println("종료");
@@ -58,13 +64,14 @@ public class Main {
 						 money += insertMoney;
 						 System.out.println("투입 금액: " + money);
 					 } else {
-						 System.out.println("올바른 금액을 투입하시오");
+						 System.out.println("지폐 또는 동전을 투입하시오");
 					 }
 					 
 				 }
 				 engine.processSelection(choice, icehot, money);
 			 } catch (Exception e) {
 				 System.out.println("올바른 값(숫자)을 입력하세요. ");
+				 scn.nextLine(); // 해당 줄 입력 버퍼 비움
 			 }
 		 }
 		 scn.close();

@@ -1,4 +1,6 @@
-package kr.ac.syu.java.chap4.third;
+//2024100863 김유민
+//얼음 통
+package kr.ac.syu.java.chap4_3;
 
 import java.util.Scanner;
 
@@ -10,13 +12,22 @@ public class IceTong {
 		Scanner scn = new Scanner(System.in);
 		
 		while (add<10) {
+			if (add == 0) { //0을 누르면 뒤로가기
+				break;
+			}
 			System.out.println("최소 10 이상을 입력하시오");
 			add = scn.nextInt();
 		}
-		ice += add;
-		
-		if (ice >= 10)
+		if (add == 0) { //뒤로가기
+			;
+		} else {
+			System.out.println("얼음이 "+add +" 만큼 추가되었습니다.");
+			ice += add;
+		}
+		if (ice >= 10) {
 			warice = false; //경고 해제
+			Manager.allWaring();
+		}
 	}
 
 	public void icetong(int icehot) { //얼음 사용

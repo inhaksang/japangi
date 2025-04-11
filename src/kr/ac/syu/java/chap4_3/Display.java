@@ -1,4 +1,6 @@
-package kr.ac.syu.java.chap4.third;
+//2024100903 정우영
+
+package kr.ac.syu.java.chap4_3;
 
 public class Display {
 	public void showMSG(int menu, int returnmoney) {

@@ -1,5 +1,6 @@
-//2024100895 이재우
-package kr.ac.syu.java.chap4.third;
+//2024100903 정우영
+//커피 통
+package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class CoffeeTong {
@@ -10,13 +11,23 @@ public class CoffeeTong {
 		Scanner scn = new Scanner(System.in);
 		
 		while (add<50) {
+			if (add == 0) { //뒤로가기
+				break;
+			}
 			System.out.println("최소 50 이상을 입력하시오");
 			add = scn.nextInt();
 		}
-		coffee += add;
+		if (add == 0) { //뒤로가기
+			;
+		} else {
+			System.out.println("커피가 "+add +" 만큼 추가되었습니다.");
+			coffee += add;
+		}
 		
-		if (coffee >= 50)
+		if (coffee >= 50) {
 			warcof = false; //경고 해제
+			Manager.allWaring();
+		}
 	}
 
 	public void coffeetong(int menu) { //커피 사용

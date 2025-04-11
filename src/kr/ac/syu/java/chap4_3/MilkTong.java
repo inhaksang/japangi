@@ -1,5 +1,6 @@
-//2024100895 이재우
-package kr.ac.syu.java.chap4.third;
+//2024100863 김유민
+//우유 통
+package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class MilkTong {
@@ -10,13 +11,23 @@ public class MilkTong {
 		Scanner scn = new Scanner(System.in);
 		
 		while (add<100) {
+			if (add == 0) { //뒤로가기
+				break;
+			}
 			System.out.println("최소 100 이상을 입력하시오");
 			add = scn.nextInt();
 		}
-		milk += add;
+		if (add == 0) { //뒤로가기
+			;
+		} else {
+			milk += add;
+			System.out.println("우유가 "+add +" 만큼 추가되었습니다.");
+		}
 		
-		if (milk >= 100)
+		if (milk >= 100) {
 			warmilk = false; //경고 해제
+			Manager.allWaring();
+		}
 	}
 
 	public void milktong(int menu) { //우유 사용

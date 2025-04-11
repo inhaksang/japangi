@@ -1,5 +1,6 @@
-//2024100895 이재우
-package kr.ac.syu.java.chap4.third;
+//2024100863 김유민
+//물 통
+package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class WaterTong {
@@ -9,13 +10,23 @@ public class WaterTong {
 	public void insertWater(int add) { //물 추가
 		Scanner scn = new Scanner(System.in);
 		
-		while (add<100) {
+		while (add<100) { 
+			if (add == 0) { //뒤로가기
+				break;
+			}
 			System.out.println("최소 100 이상을 입력하시오");
 			add = scn.nextInt();
 		}
-		water += add;
-		if (water >= 100) 
+		if (add == 0) { //뒤로가기
+			;
+		} else {
+			System.out.println("물이 "+add +" 만큼 추가되었습니다.");
+			water += add;
+		}
+		if (water >= 100) {
 			warwar = false;
+			Manager.allWaring();
+		}
 	}
 
 	public void watertong(int menu) { //물 사용

@@ -1,4 +1,6 @@
-package kr.ac.syu.java.chap4.third;
+//2024100895 이재우
+//돈 통
+package kr.ac.syu.java.chap4_3;
 
 
 class MoneyBox {
@@ -39,6 +41,7 @@ class MoneyBox {
 		havingMoney();
 		if (_5000  >= 1 && _1000  >= 10 && _500 >= 10 && _100 >= 10) {
 			warmon = false;
+			Manager.allWaring();
 		}
 	}
 	public int returnMoney(int choice, int money) { //거스름돈 반환
