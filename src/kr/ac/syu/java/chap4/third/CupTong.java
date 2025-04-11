@@ -6,7 +6,7 @@ public class CupTong {
 	static int icecup = 50, hotcup = 50; //컵 잔여개수
 	static boolean warcup = false; //컵 부족 시 true
 	
-	public void insertMilk(int type, int add) { //컵 추가
+	public void insertCup(int type, int add) { //컵 추가
 		Scanner scn = new Scanner(System.in);
 		if (type == 1) {
 			while (add<1) {

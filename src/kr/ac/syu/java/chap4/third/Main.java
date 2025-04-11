@@ -16,19 +16,19 @@ public class Main {
 		 
 		 
 		 while(true) {
-			 money = 0; //초기화
-			 Manager.allWaring(); //재료 부족시 경고
-			 
-			 while(Manager.waring) { //경고 해제시까지 반복
-				 System.out.println("재료 또는 거스름돈이 부족합니다");
-				 manager.manager();
-			 }
-			 
-			 System.out.println("\n\n메뉴를 선택하세요. 관리자 모드는 '100'을 입력하시오.");
-			 System.out.println("아메리카노 : 1\n카페라떼 : 2\n우유 : 3");
-			 int choice = scn.nextInt(); //입력받은 메뉴
-			 
 			 try {
+				 money = 0; //초기화
+				 Manager.allWaring(); //재료 부족시 경고
+				 
+				 while(Manager.waring) { //경고 해제시까지 반복
+					 System.out.println("재료 또는 거스름돈이 부족합니다");
+					 manager.manager();
+				 }
+				 
+				 System.out.println("\n\n메뉴를 선택하세요. 관리자 모드는 '100'을 입력하시오.");
+				 System.out.println("아메리카노 : 1\n카페라떼 : 2\n우유 : 3");
+				 int choice = scn.nextInt(); //입력받은 메뉴
+			 
 				 if (choice == 100) {
 					 manager.manager();
 				 

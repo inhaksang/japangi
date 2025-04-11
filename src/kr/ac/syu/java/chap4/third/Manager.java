@@ -68,7 +68,7 @@ public class Manager {
 					System.out.println("추가할 컵의 종류를 입력하시오\nice컵 : 1.\nhot컵 : 2");
 					int cuptype = scn.nextInt();
 					add = scn.nextInt();
-					cup.insertMilk(cuptype, add);
+					cup.insertCup(cuptype, add);
 					 
 				} else if (addchoice == 6) {
 					System.out.println("추가할 얼음의 개수를 입력하시오");
