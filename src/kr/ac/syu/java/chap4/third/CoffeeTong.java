@@ -1,37 +1,32 @@
+//2024100895 이재우
 package kr.ac.syu.java.chap4.third;
+import java.util.Scanner;
 
 public class CoffeeTong {
+	static int coffee = 1000; //커피 잔여량
+	static boolean warcof = false; //커피 부족 시 true
 	
-	private int coffeeAmount;
+	public void insertcoffee(int add) { //커피 추가
+		Scanner scn = new Scanner(System.in);
+		
+		while (add<50) {
+			System.out.println("최소 50 이상을 입력하시오");
+			add = scn.nextInt();
+		}
+		coffee += add;
+		
+		if (coffee >= 50)
+			warcof = false; //경고 해제
+	}
 
-    // 기본 
-    public CoffeeTong() {
-        this.coffeeAmount = 1000;
-    }
-
-    // 커피 사용
-    public boolean useCoffee(int amount) {
-        if (coffeeAmount >= amount) {
-            coffeeAmount -= amount;
-            System.out.println("커피 " + amount + "g 사용. " + coffeeAmount + "g 남음.");
-            return true;
-        } else {
-            System.out.println("커피가 부족해요!!!!! 현재 남은 양: " + coffeeAmount + "g");
-            return false;
-        }
-    }
-
-    // 커피 추가
-    public void addCoffee(int amount) {
-        if (amount > 0) {
-            coffeeAmount += amount;
-            System.out.println(amount + "g 추가. 현재 총량: " + coffeeAmount + "g");
-        }
-    }
-
-    // 현재 커피 양
-    public int getCoffeeAmount() {
-        return coffeeAmount;
-    }
-
+	public void coffeetong(int menu) { //커피 사용
+		if (menu == 1) {
+			coffee -= 50;
+		} else if (menu == 2) {
+			coffee -= 30;
+		}
+		if (coffee < 50) {
+			warcof = true; //경고 실행
+		}
+	}
 }
