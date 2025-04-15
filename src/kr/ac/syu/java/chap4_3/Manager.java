@@ -6,22 +6,32 @@ import java.util.Scanner;
 
 public class Manager {
 	
+	private MoneyBox money;
+	private CoffeeTong coffee;
+	private WaterTong water;
+	private MilkTong milk;
+	private CupTong cup;
+	private IceTong ice;
+	
+	public Manager(CoffeeTong coffee, WaterTong water, MilkTong milk, CupTong cup, IceTong ice, MoneyBox moneybox) { //생성자
+		this.coffee = coffee;
+		this.water = water;
+		this.milk = milk;
+		this.cup = cup;
+		this.ice = ice;
+		this.money = moneybox;
+	}
+	
 	static boolean waring = false; //재료가 부족할 경우 true(경고 실행)
 	
-	public static void allWaring() { //각 재료 중 하나라도 부족하면 waring = true
-		if (WaterTong.warwar || MilkTong.warmilk || CoffeeTong.warcof || IceTong.warice || CupTong.warcup || MoneyBox.warmon) {
+	public void allWaring() { //각 재료 중 하나라도 부족하면 waring = true
+		if (water.warwar() || milk.warmilk() || coffee.warcof() || ice.warice() || cup.warcup() || money.warmon()) {
 			waring = true;
 		} else {
 			waring = false;
 		}
 	}
 	
-	MoneyBox money = new MoneyBox();
-	CoffeeTong coffee = new CoffeeTong();
-	WaterTong water = new WaterTong();
-	MilkTong milk = new MilkTong();
-	CupTong cup = new CupTong();
-	IceTong ice = new IceTong();
 	
 	Scanner scn = new Scanner(System.in);
 	

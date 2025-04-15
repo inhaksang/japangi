@@ -4,8 +4,23 @@ package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class MilkTong {
-	static int milk = 1000; //우유 잔여량
-	static boolean warmilk = false; //우유 부족 시 true
+	int milk; //우유 잔여량
+	
+	
+	
+	//기본 생성자
+	public MilkTong() {}
+	
+	//초기값 설정용 생성자
+	public MilkTong(int milk) {
+		this.milk = milk;
+	}
+	
+	
+	
+	public boolean warmilk() {
+		return (milk < 100) ? true : false; //우유 부족 시 true
+	}
 	
 	public void insertMilk(int add) { //우유 추가
 		Scanner scn = new Scanner(System.in);
@@ -23,11 +38,7 @@ public class MilkTong {
 			milk += add;
 			System.out.println("우유가 "+add +" 만큼 추가되었습니다.");
 		}
-		
-		if (milk >= 100) {
-			warmilk = false; //경고 해제
-			Manager.allWaring();
-		}
+		warmilk();
 	}
 
 	public void milktong(int menu) { //우유 사용
@@ -36,8 +47,6 @@ public class MilkTong {
 		} else if (menu == 3) {
 			milk -= 100;
 		}
-		if (milk < 100) {
-			warmilk = true; //경고 실행
-		}
+		warmilk();
 	}
 }

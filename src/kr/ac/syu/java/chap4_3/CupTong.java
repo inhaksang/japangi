@@ -5,8 +5,25 @@ package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class CupTong {
-	static int icecup = 50, hotcup = 50; //컵 잔여개수
-	static boolean warcup = false; //컵 부족 시 true
+	int icecup=0;
+	int hotcup=0; //컵 잔여개수
+	
+	
+	
+	//기본 생성자
+	public CupTong() {}
+	
+	//초기값용 생성자
+	public CupTong(int icecup, int hotcup) {
+		this.icecup = icecup;
+		this.hotcup = hotcup;
+	}
+	
+	
+	
+	public boolean warcup() {
+		return (icecup<1 || hotcup<1) ? true : false; //컵 부족 시 true
+	}
 	
 	public void insertCup(int type, int add) { //컵 추가
 		Scanner scn = new Scanner(System.in);
@@ -46,24 +63,16 @@ public class CupTong {
 		} else {
 			System.out.println("올바른 값을 입력하시오"); //1, 2 이외 값 입력시
 		}
-		if (icecup >= 1 && hotcup >= 1) {
-			warcup = false; //경고 해제
-			Manager.allWaring();
-		}
+		warcup();
 	}
 
 	public void cuptong(int icehot) { //컵 사용
 		if (icehot == 1) {
 			icecup -= 1;
-			if (icecup < 1) {
-				warcup = true; //경고 실행
-			}
 		} else if (icehot == 2) {
 			hotcup -= 1;
-			if (hotcup < 1) {
-				warcup = true; //경고 실행
-			}
 		}
+		warcup();
 	}
 
 }

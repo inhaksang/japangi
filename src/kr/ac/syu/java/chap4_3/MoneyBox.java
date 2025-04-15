@@ -6,15 +6,29 @@ package kr.ac.syu.java.chap4_3;
 class MoneyBox {
 	Menu menu = new Menu();
 	
-	static boolean warmon = false;
 	
 	//거스름돈 전용
-	static int _100 = 100;
-	static int _500 = 100;
-	static int _1000 = 100;
-	static int _5000 = 100;
+	private int _100, _500, _1000, _5000; //static 되도록 사용 x
+	
+	// 기본 생성자
+	public MoneyBox() {}
+	
+	//초기값 설정용 생성자
+	public MoneyBox(int[] money) {
+		this._100 = money[0];
+		this._500 = money[1];
+		this._1000 = money[2];
+		this._5000 = money[3];
+	}
+	
+	
+	public boolean warmon() {
+		return (_5000  < 1 || _1000  < 10 || _500 < 10 || _100 < 10) ? true : false;
+	}
 	
 	static int totalmoney = 0; //총 수익
+	
+	
 	
 	
 	public void havingMoney() { //잔여 거스름돈 확인
@@ -39,10 +53,7 @@ class MoneyBox {
 			System.out.println("올바른 단위를 입력하시오");
 		}
 		havingMoney();
-		if (_5000  >= 1 && _1000  >= 10 && _500 >= 10 && _100 >= 10) {
-			warmon = false;
-			Manager.allWaring();
-		}
+		warmon();
 	}
 	public int returnMoney(int choice, int money) { //거스름돈 반환
 		int price = menu.findPrice(choice);
@@ -64,9 +75,7 @@ class MoneyBox {
 			_100--;
 			i -= 100;
 		}
-		if (_5000  < 1 || _1000  < 10 || _500 < 10 || _100 < 10) {
-			warmon = true;
-		}
+		warmon();
 		
 		return returnmoney;
 	}

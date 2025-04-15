@@ -4,8 +4,23 @@ package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class WaterTong {
-	static int water = 1000; //물 잔여량
-	static boolean warwar = false;
+	int water; //물 잔여량
+	
+	
+	
+	//기본 생성자
+	public WaterTong() {}
+	
+	//초기값 설정용 생성자
+	public WaterTong(int water) {
+		this.water = water;
+	}
+	
+	
+	
+	public boolean warwar() {
+		return (water < 100) ? true : false;
+	}
 	
 	public void insertWater(int add) { //물 추가
 		Scanner scn = new Scanner(System.in);
@@ -23,19 +38,14 @@ public class WaterTong {
 			System.out.println("물이 "+add +" 만큼 추가되었습니다.");
 			water += add;
 		}
-		if (water >= 100) {
-			warwar = false;
-			Manager.allWaring();
-		}
+		warwar();
 	}
 
 	public void watertong(int menu) { //물 사용
 		if (menu == 1) {
 			water  -= 100;
 		}
-		if (water < 100) {
-			warwar = true;//경고 실행
-		}
+		warwar();
 	}
 
 }

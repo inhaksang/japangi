@@ -4,8 +4,22 @@ package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class CoffeeTong {
-	static int coffee = 1000; //커피 잔여량
-	static boolean warcof = false; //커피 부족 시 true
+	int coffee; //커피 잔여량
+	
+	
+	//기본 생성자
+	public CoffeeTong() {} 
+	
+	//초기값 설정용 생성자
+	public CoffeeTong(int coffee) {
+		this.coffee = coffee;
+	}
+	
+	
+	
+	public boolean warcof() {
+		return (coffee < 50) ? true : false; //커피 부족 시 true
+	}
 	
 	public void insertcoffee(int add) { //커피 추가
 		Scanner scn = new Scanner(System.in);
@@ -23,11 +37,7 @@ public class CoffeeTong {
 			System.out.println("커피가 "+add +" 만큼 추가되었습니다.");
 			coffee += add;
 		}
-		
-		if (coffee >= 50) {
-			warcof = false; //경고 해제
-			Manager.allWaring();
-		}
+		warcof();
 	}
 
 	public void coffeetong(int menu) { //커피 사용
@@ -36,8 +46,6 @@ public class CoffeeTong {
 		} else if (menu == 2) {
 			coffee -= 30;
 		}
-		if (coffee < 50) {
-			warcof = true; //경고 실행
-		}
+		warcof();
 	}
 }

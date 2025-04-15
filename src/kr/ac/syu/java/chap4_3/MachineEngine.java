@@ -2,21 +2,22 @@
 package kr.ac.syu.java.chap4_3;
 
 public class MachineEngine {
-	private MoneyBox moneyBox; //돈통
-	private CoffeeTong coffee; //커피통
-	private WaterTong water; //물통
-	private MilkTong milk; //우유통
-	private CupTong cup;//컵통
-	private IceTong ice; //얼음통
-	private Display display; //화면
 	
-	public MachineEngine() { //생성자
-		moneyBox = new MoneyBox();
-		coffee = new CoffeeTong(); 
-		water = new WaterTong();
-		milk = new MilkTong();
-		cup = new CupTong();
-		ice = new IceTong(); 
+	private MoneyBox moneybox;
+	private CoffeeTong coffee;
+	private WaterTong water;
+	private MilkTong milk;
+	private CupTong cup;
+	private IceTong ice;
+	private Display display;
+	
+	public MachineEngine(CoffeeTong coffee, WaterTong water, MilkTong milk, CupTong cup, IceTong ice, MoneyBox moneybox) { //생성자
+		this.coffee = coffee;
+		this.water = water;
+		this.milk = milk;
+		this.cup = cup;
+		this.ice = ice;
+		this.moneybox = moneybox;
 		display = new Display();
 	}
 
@@ -27,8 +28,8 @@ public class MachineEngine {
 		cup.cuptong(icehot);
 		ice.icetong(icehot);
 		
-		int returnmoney = moneyBox.returnMoney(choice, money);
-		moneyBox.totalmoney += money - returnmoney;
+		int returnmoney = moneybox.returnMoney(choice, money);
+		moneybox.totalmoney += money - returnmoney;
 		display.showMSG(choice, returnmoney);
 		
 	}

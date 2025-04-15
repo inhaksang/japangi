@@ -5,8 +5,22 @@ package kr.ac.syu.java.chap4_3;
 import java.util.Scanner;
 
 public class IceTong {
-	static int ice = 100; //얼음 잔여량
-	static boolean warice = false; //얼음 부족 시 true
+	
+	int ice; //얼음 잔여량
+	
+	//기본 생성자
+	public IceTong() {}
+	
+	//초기값 설정춍 생성자
+	public IceTong(int ice) {
+		this.ice = ice;
+	}
+	
+	
+	
+	public boolean warice() {
+		return (ice < 10) ? true : false;
+	}
 	
 	public void insertice(int add) { //얼음 추가
 		Scanner scn = new Scanner(System.in);
@@ -24,19 +38,15 @@ public class IceTong {
 			System.out.println("얼음이 "+add +" 만큼 추가되었습니다.");
 			ice += add;
 		}
-		if (ice >= 10) {
-			warice = false; //경고 해제
-			Manager.allWaring();
-		}
+		warice();
 	}
 
 	public void icetong(int icehot) { //얼음 사용
 		if (icehot == 1) {
 			ice -= 10;
-		} 
-		if (ice < 10) {
-			warice = true; //경고 실행
 		}
+		warice();
+
 	}
 
 }
